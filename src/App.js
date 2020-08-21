@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import MPList from './components/MP_List.js'
+import MPSearch from './containers/MP_Search.js'
 
 function App() {
   return (
- <MPList/>
+ <MPSearch/>
   );
 }
 

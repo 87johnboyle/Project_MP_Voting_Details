@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import MPSelector from '../components/MPSelector.js';
-import MPDetail from '../components/MpDetail.js';
+import MPDetail from '../components/MPDetail.js';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/dist/react-activity.css';
+import { parseString } from 'react-native-xml2js'
 
 class MPSearch extends Component {
   constructor(props){
@@ -38,7 +39,7 @@ class MPSearch extends Component {
  }
 
  render(){
-  if(!loading){
+  if(!this.state.loading){
     return(
       <div>
         <h2>MP</h2>
@@ -51,6 +52,7 @@ class MPSearch extends Component {
   else {
     return (
     <Dots />
+  );
 }
 }
 }
