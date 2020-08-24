@@ -25,6 +25,7 @@ class MPSearch extends Component {
             parseString(responseText, (err, result) => {
               if(result) {
                 this.setState({ data: result, loading: false })
+                console.log(this.state.data.Members.Member[0].DisplayAs)
               }
              })
             })
@@ -34,7 +35,7 @@ class MPSearch extends Component {
   }
 
   handleMPSelected(index){
-   const selectedMP = this.state.data[index];
+   const selectedMP = this.state.data.Members.Member[index];
    this.setState({selectedMP: selectedMP});
  }
 
@@ -43,7 +44,7 @@ class MPSearch extends Component {
     return(
       <div>
         <h2>MP</h2>
-        <MPSelector data={this.state.mp}
+        <MPSelector data={this.state.data}
           onMPSelected={this.handleMPSelected} />
           <MPDetail mp={this.state.selectedMP} />
       </div>

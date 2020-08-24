@@ -3,8 +3,8 @@ import React from 'react';
 // this.state.data.Members.Member[0].DisplayAs
 
 const MPSelector = (props) => {
-  const options = props.mp.map((mp, index) => {
-    return <option value={index} key={index}>{mp.DisplayAs}</option>
+  const options = props.data.Members.Member.map((data, index) => {
+    return <option value={index} key={index}>{data.DisplayAs}</option>
   })
 
 
@@ -15,7 +15,7 @@ const MPSelector = (props) => {
 
     return(
         <select id="mp-selector" onChange={handleChange} defaultValue="default">
-          <option disable value="default"> Choose MP</option>
+          <option value="default"> Choose MP</option>
           {options}
         </select>
 

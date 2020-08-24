@@ -4,7 +4,7 @@ const MPDetail = (props) => {
   if(!props.mp) return null;
   return(
     <div>
-      <h3>{props.mp.name}</h3>
+      <h3>{props.mp.DisplayAs}</h3>
     </div>
   );
 }
