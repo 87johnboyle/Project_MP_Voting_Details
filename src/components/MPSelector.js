@@ -15,7 +15,7 @@ const MPSelector = (props) => {
 
     return(
         <select id="mp-selector" onChange={handleChange} defaultValue="default">
-          <option value="default"> Choose MP</option>
+          <option value="default"> Choose MP </option>
           {options}
         </select>
 

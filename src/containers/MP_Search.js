@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MPSelector from '../components/MPSelector.js';
 import MPDetail from '../components/MPDetail.js';
+import MPDetail2 from '../components/MPDetail.js';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/dist/react-activity.css';
 import { parseString } from 'react-native-xml2js'
@@ -11,9 +12,11 @@ class MPSearch extends Component {
       this.state = {
         data:[],
         loading: true,
-        selectedMP: null
+        selectedMP: null,
+        selectedMP2:null
       };
       this.handleMPSelected = this.handleMPSelected.bind(this);
+      this.handleMP2Selected = this.handleMP2Selected.bind(this);
   }
 
   componentDidMount = () => {
@@ -39,14 +42,24 @@ class MPSearch extends Component {
    this.setState({selectedMP: selectedMP});
  }
 
+ handleMP2Selected(index){
+  const selectedMP2 = this.state.data.Members.Member[index];
+  this.setState({selectedMP2: selectedMP2});
+}
+
  render(){
   if(!this.state.loading){
     return(
       <div>
-        <h2>MP</h2>
         <MPSelector data={this.state.data}
           onMPSelected={this.handleMPSelected} />
+
           <MPDetail mp={this.state.selectedMP} />
+
+          <MPSelector data={this.state.data}
+            onMPSelected={this.handleMP2Selected} />
+
+            <MPDetail2 mp={this.state.selectedMP2} />
       </div>
     );
   }
