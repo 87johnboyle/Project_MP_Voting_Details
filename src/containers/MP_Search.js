@@ -14,7 +14,10 @@ class MPSearch extends Component {
         data:[],
         loading: true,
         selectedMP: null,
-        selectedMP2:null
+        selectedMP2: null,
+        mpNumber1:'',
+        mpNumber2:''
+
       };
       this.handleMPSelected = this.handleMPSelected.bind(this);
       this.handleMP2Selected = this.handleMP2Selected.bind(this);
@@ -40,12 +43,16 @@ class MPSearch extends Component {
 
   handleMPSelected(index){
    const selectedMP = this.state.data.Members.Member[index];
+   const mpNumber1 = this.state.data.Members.Member[index].$.Member_Id
    this.setState({selectedMP: selectedMP});
+   this.setState({mpNumber1: mpNumber1 })
  }
 
  handleMP2Selected(index){
   const selectedMP2 = this.state.data.Members.Member[index];
+  const mpNumber2 = this.state.data.Members.Member[index].$.Member_Id
   this.setState({selectedMP2: selectedMP2});
+  this.setState({mpNumber2: mpNumber2 })
 }
 
  render(){

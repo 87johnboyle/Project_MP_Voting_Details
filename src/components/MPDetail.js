@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const MPDetail = (props) => {
   if(!props.mp) return null;
   return(
