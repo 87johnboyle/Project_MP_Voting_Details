@@ -14,11 +14,12 @@ const MPSelector = (props) => {
     }
 
     return(
-        <select id="mp-selector" onChange={handleChange} defaultValue="default">
-          <option value="default"> Choose MP </option>
+      <div>
+        <datalist id="suggestions">
           {options}
-        </select>
-
+        </datalist>
+        <input autoComplete="on" list="suggestions" placeholder="Choose MP"/>
+      </div>
 )}
 
 export default MPSelector
