@@ -4,7 +4,8 @@ import MPDetail from '../components/MPDetail.js';
 import MPDetail2 from '../components/MPDetail.js';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/dist/react-activity.css';
-import { parseString } from 'react-native-xml2js'
+import { parseString } from 'react-native-xml2js';
+import '../App.css'
 
 class MPSearch extends Component {
   constructor(props){
@@ -51,15 +52,30 @@ class MPSearch extends Component {
   if(!this.state.loading){
     return(
       <div>
-        <MPSelector data={this.state.data}
-          onMPSelected={this.handleMPSelected} />
+      <div className ="mp-selector-container">
 
-          <MPDetail mp={this.state.selectedMP} />
+      <MPSelector
+        className="mp-selector-1"
+        data={this.state.data}
+        onMPSelected={this.handleMPSelected} />
 
-          <MPSelector data={this.state.data}
-            onMPSelected={this.handleMP2Selected} />
+        <MPSelector
+          className="mp-selector-2"
+          data={this.state.data}
+          onMPSelected={this.handleMP2Selected} />
 
-            <MPDetail2 mp={this.state.selectedMP2} />
+      </div>
+
+      <div className="mp-detail-container">
+
+          <MPDetail
+          className="mp-detail-1"
+          mp={this.state.selectedMP} />
+
+            <MPDetail2
+            className="mp-detail-2"
+            mp={this.state.selectedMP2} />
+      </div>
       </div>
     );
   }
