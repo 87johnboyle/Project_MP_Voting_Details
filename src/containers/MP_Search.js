@@ -17,8 +17,8 @@ class MPSearch extends Component {
         selectedMP2: null,
         mpNumber1:'',
         mpNumber2:'',
-        voteData1:[],
-        voteData2:[]
+        voteData1:null,
+        voteData2:null
 
       };
       this.handleMPSelected = this.handleMPSelected.bind(this);
@@ -110,11 +110,13 @@ class MPSearch extends Component {
 
           <MPDetail
           className="mp-detail-1"
-          mp={this.state.selectedMP} />
+          mp={this.state.selectedMP}
+          vote={this.state.voteData1}/>
 
             <MPDetail2
             className="mp-detail-2"
-            mp={this.state.selectedMP2} />
+            mp={this.state.selectedMP2}
+            vote={this.state.voteData2}/>
       </div>
       </div>
     );

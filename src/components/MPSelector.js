@@ -1,7 +1,5 @@
 import React from 'react';
 
-// this.state.data.Members.Member[0].DisplayAs
-
 const MPSelector = (props) => {
   const options = props.data.Members.Member.map((data, index) => {
     return <option value={index} key={index}>{data.DisplayAs}</option>
