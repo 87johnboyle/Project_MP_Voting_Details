@@ -16,7 +16,9 @@ class MPSearch extends Component {
         selectedMP: null,
         selectedMP2: null,
         mpNumber1:'',
-        mpNumber2:''
+        mpNumber2:'',
+        voteData1:[],
+        voteData2:[]
 
       };
       this.handleMPSelected = this.handleMPSelected.bind(this);
@@ -32,7 +34,7 @@ class MPSearch extends Component {
             parseString(responseText, (err, result) => {
               if(result) {
                 this.setState({ data: result, loading: false })
-                console.log(this.state.data.Members.Member[0].DisplayAs)
+                console.log('MPs Loaded')
               }
              })
             })
@@ -46,6 +48,21 @@ class MPSearch extends Component {
    const mpNumber1 = this.state.data.Members.Member[index].$.Member_Id
    this.setState({selectedMP: selectedMP});
    this.setState({mpNumber1: mpNumber1 })
+   fetch('https://commonsvotes-services.digiminster.com/data/divisions.xml/membervoting?queryParameters.memberId='+mpNumber1, {
+         method: 'GET'
+      })
+              .then((response) => response.text())
+              .then((responseText) => {
+             parseString(responseText, (err, result) => {
+               if(result) {
+                 this.setState({ voteData1: result})
+                 console.log('API Success')
+               }
+              })
+             })
+          .catch((error) => {
+            console.log('Error fetching data -  ', error);
+          });
  }
 
  handleMP2Selected(index){
@@ -53,6 +70,22 @@ class MPSearch extends Component {
   const mpNumber2 = this.state.data.Members.Member[index].$.Member_Id
   this.setState({selectedMP2: selectedMP2});
   this.setState({mpNumber2: mpNumber2 })
+  fetch('https://commonsvotes-services.digiminster.com/data/divisions.xml/membervoting?queryParameters.memberId='+mpNumber2, {
+        method: 'GET'
+     })
+             .then((response) => response.text())
+             .then((responseText) => {
+            parseString(responseText, (err, result) => {
+              if(result) {
+                this.setState({ voteData2: result})
+                console.log('API Success')
+              }
+             })
+            })
+         .catch((error) => {
+           console.log('Error fetching data -  ', error);
+         });
+
 }
 
  render(){
