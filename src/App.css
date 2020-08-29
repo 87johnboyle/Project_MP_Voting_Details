@@ -9,7 +9,8 @@ body {
 .details {
   background-color: white;
   border-radius: 25px;
-  padding: 15px
+  padding: 15px;
+  max-width: 560px
 }
 
 .mp-selector-container {
