@@ -1,22 +1,30 @@
 h1 {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
-  background-color: #DFDFDF
+  background-color: #DFDFDF;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .details {
   background-color: white;
   border-radius: 25px;
   padding: 15px;
-  max-width: 560px
+  max-width: 560px;
+  margin:10px
+}
+
+li{
+  margin:10px
 }
 
 .mp-selector-container {
   display: flex;
   justify-content: center;
-  grid-gap: 80px
+  grid-gap: 80px;
+  margin:10px
 }
 
 .mp-detail-container {
