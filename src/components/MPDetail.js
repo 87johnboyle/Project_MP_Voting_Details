@@ -5,8 +5,9 @@ class MPDetail extends Component {
 render(){
   if(!this.props.mp) return null;
   if(!this.props.vote) return null;
+
   return(
-    <div>
+    <div className="details">
       <h3>{this.props.mp.DisplayAs}</h3>
       <img src={'http://data.parliament.uk/membersdataplatform/services/images/MemberPhoto/'+this.props.mp.$.Member_Id} alt="MP"/>
       <h4>Constituency: {this.props.mp.MemberFrom}</h4>

@@ -95,12 +95,10 @@ class MPSearch extends Component {
       <div className ="mp-selector-container">
 
       <MPSelector
-        className="mp-selector-1"
         data={this.state.data}
         onMPSelected={this.handleMPSelected} />
 
         <MPSelector
-          className="mp-selector-2"
           data={this.state.data}
           onMPSelected={this.handleMP2Selected} />
 
@@ -109,12 +107,11 @@ class MPSearch extends Component {
       <div className="mp-detail-container">
 
           <MPDetail
-          className="mp-detail-1"
+          className="detail1"
           mp={this.state.selectedMP}
           vote={this.state.voteData1}/>
 
             <MPDetail2
-            className="mp-detail-2"
             mp={this.state.selectedMP2}
             vote={this.state.voteData2}/>
       </div>
