@@ -107,7 +107,6 @@ class MPSearch extends Component {
       <div className="mp-detail-container">
 
           <MPDetail
-          className="detail1"
           mp={this.state.selectedMP}
           vote={this.state.voteData1}/>
 
