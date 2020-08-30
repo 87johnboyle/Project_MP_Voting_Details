@@ -8,16 +8,25 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+img {
+  float: left;
+  padding: 5px;
+  border-radius: 8px
+}
+
 .details {
   background-color: white;
   border-radius: 25px;
+  border-style: groove;
   padding: 15px;
   max-width: 560px;
   margin:10px
 }
 
 li{
-  margin:10px
+  margin:10px;
+  clear: left;
+  padding: 5px
 }
 
 .mp-selector-container {

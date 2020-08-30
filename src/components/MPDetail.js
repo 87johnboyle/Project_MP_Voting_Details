@@ -11,14 +11,18 @@ render(){
 
   return(
     <div className="details">
-      <h3>{this.props.mp.DisplayAs}</h3>
+      <div className="info">
       <img src={'http://data.parliament.uk/membersdataplatform/services/images/MemberPhoto/'+this.props.mp.$.Member_Id} alt="MP"/>
-      <h4>Constituency: {this.props.mp.MemberFrom}</h4>
-      <h4>Party: {this.props.mp.Party[0]._}</h4>
+      <h2>{this.props.mp.DisplayAs}</h2>
+      <h3>Constituency</h3> <p>{this.props.mp.MemberFrom}</p>
+      <h3>Party</h3> <p>{this.props.mp.Party[0]._}</p>
+      </div>
+      <div className="votes">
       {votes.map(vote => (
         <li key={uuidv4()}>{vote.PublishedDivision[0].Title} {vote.MemberVotedAye.toString().replace('true', '✅').replace('false', '⛔️')}
         </li>
       ))}
+      </div>
     </div>
   );
 }
