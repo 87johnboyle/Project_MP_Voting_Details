@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import MPSelector from '../components/MPSelector.js';
+import MPSelector2 from '../components/MPSelector2.js';
 import MPDetail from '../components/MPDetail.js';
-import MPDetail2 from '../components/MPDetail.js';
+import MPDetail2 from '../components/MPDetail2.js';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/dist/react-activity.css';
 import { parseString } from 'react-native-xml2js';
@@ -12,6 +13,7 @@ class MPSearch extends Component {
       super(props);
       this.state = {
         data:[],
+        data2: [],
         loading: true,
         selectedMP: null,
         selectedMP2: null,
@@ -33,7 +35,7 @@ class MPSearch extends Component {
              .then((responseText) => {
             parseString(responseText, (err, result) => {
               if(result) {
-                this.setState({ data: result, loading: false })
+                this.setState({ data: result, data2: result, loading: false })
                 console.log('MPs Loaded')
               }
              })
@@ -66,8 +68,8 @@ class MPSearch extends Component {
  }
 
  handleMP2Selected(index){
-  const selectedMP2 = this.state.data.Members.Member[index];
-  const mpNumber2 = this.state.data.Members.Member[index].$.Member_Id
+  const selectedMP2 = this.state.data2.Members.Member[index];
+  const mpNumber2 = this.state.data2.Members.Member[index].$.Member_Id
   this.setState({selectedMP2: selectedMP2});
   this.setState({mpNumber2: mpNumber2 })
   fetch('https://commonsvotes-services.digiminster.com/data/divisions.xml/membervoting?queryParameters.memberId='+mpNumber2, {
@@ -98,9 +100,9 @@ class MPSearch extends Component {
         data={this.state.data}
         onMPSelected={this.handleMPSelected} />
 
-        <MPSelector
-          data={this.state.data}
-          onMPSelected={this.handleMP2Selected} />
+        <MPSelector2
+          data={this.state.data2}
+          onMP2Selected={this.handleMP2Selected} />
 
       </div>
 
@@ -111,8 +113,8 @@ class MPSearch extends Component {
           vote={this.state.voteData1}/>
 
             <MPDetail2
-            mp={this.state.selectedMP2}
-            vote={this.state.voteData2}/>
+            mp2={this.state.selectedMP2}
+            vote2={this.state.voteData2}/>
       </div>
       </div>
     );
