@@ -3,6 +3,7 @@ import MPSelector from '../components/MPSelector.js';
 import MPSelector2 from '../components/MPSelector2.js';
 import MPDetail from '../components/MPDetail.js';
 import MPDetail2 from '../components/MPDetail2.js';
+import MPVotesCombined from '../components/MPVotesCombined.js';
 import Dots from 'react-activity/lib/Dots';
 import 'react-activity/dist/react-activity.css';
 import { parseString } from 'react-native-xml2js';
@@ -20,7 +21,8 @@ class MPSearch extends Component {
         mpNumber1:'',
         mpNumber2:'',
         voteData1:null,
-        voteData2:null
+        voteData2:null,
+        voteDataAll:null
 
       };
       this.handleMPSelected = this.handleMPSelected.bind(this);
@@ -43,6 +45,22 @@ class MPSearch extends Component {
          .catch((error) => {
            console.log('Error fetching data -  ', error);
          });
+
+      fetch('https://commonsvotes-services.digiminster.com/data/divisions.xml/search', {
+           method: 'GET'
+         })
+         .then((response) => response.text())
+         .then((responseText) => {
+        parseString(responseText, (err, result) => {
+          if(result) {
+            this.setState({ voteDataAll: result})
+            console.log('Vote API Success')
+          }
+         })
+        })
+       .catch((error) => {
+       console.log('Error fetching data -  ', error);
+       });
   }
 
   handleMPSelected(index){
@@ -116,6 +134,16 @@ class MPSearch extends Component {
             mp2={this.state.selectedMP2}
             vote2={this.state.voteData2}/>
       </div>
+
+      <div className="compare-container">
+
+      <MPVotesCombined
+        vote={this.state.voteData1}
+        vote2={this.state.voteData2}
+        voteDataAll={this.state.voteDataAll} />
+
+      </div>
+
       </div>
     );
   }

@@ -17,12 +17,6 @@ render(){
       <h3>Constituency</h3> <p>{this.props.mp2.MemberFrom}</p>
       <h3>Party</h3> <p>{this.props.mp2.Party[0]._}</p>
       </div>
-      <div className="votes">
-      {votes.map(vote => (
-        <li key={uuidv4()}>{vote.PublishedDivision[0].Title} {vote.MemberVotedAye.toString().replace('true', '✅').replace('false', '⛔️')}
-        </li>
-      ))}
-      </div>
     </div>
   );
 }
