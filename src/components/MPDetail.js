@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 class MPDetail extends Component {
 
 render(){
   if(!this.props.mp) return null;
   if(!this.props.vote) return null;
-
-  const votes = this.props.vote.ArrayOfMemberVotingRecord.MemberVotingRecord
 
   return(
     <div className="details">

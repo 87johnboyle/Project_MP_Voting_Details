@@ -10,6 +10,41 @@ render(){
 
 const voteDataAll = this.props.voteDataAll.ArrayOfPublishedDivision.PublishedDivision
 
+let voteTitles1 = this.props.vote.ArrayOfMemberVotingRecord.MemberVotingRecord.map(vote => {
+  return vote.PublishedDivision[0].Title[0]
+})
+
+let voteAye1 = this.props.vote.ArrayOfMemberVotingRecord.MemberVotingRecord.map(vote => {
+  return vote.MemberVotedAye[0]
+})
+
+let votesCombined1 = {}, i,
+keys = voteTitles1,
+values = voteAye1;
+
+for (i = 0; i < keys.length; i++) {
+  votesCombined1[keys[i]] = values[i];
+}
+
+let voteTitles2 = this.props.vote2.ArrayOfMemberVotingRecord.MemberVotingRecord.map(vote => {
+  return vote.PublishedDivision[0].Title[0]
+})
+
+let voteAye2 = this.props.vote2.ArrayOfMemberVotingRecord.MemberVotingRecord.map(vote => {
+  return vote.MemberVotedAye[0]
+})
+
+let votesCombined2 = {}, a,
+keys2 = voteTitles2,
+values2 = voteAye2;
+
+for (a = 0; a < keys2.length; a++) {
+  votesCombined2[keys2[a]] = values2[a];
+}
+
+console.log(votesCombined1)
+console.log(votesCombined2)
+
   return(
     <div>
     <div className="votes">

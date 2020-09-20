@@ -14,7 +14,6 @@ class MPSearch extends Component {
       super(props);
       this.state = {
         data:[],
-        data2: [],
         loading: true,
         selectedMP: null,
         selectedMP2: null,
@@ -37,7 +36,7 @@ class MPSearch extends Component {
              .then((responseText) => {
             parseString(responseText, (err, result) => {
               if(result) {
-                this.setState({ data: result, data2: result, loading: false })
+                this.setState({ data: result, loading: false })
                 console.log('MPs Loaded')
               }
              })
@@ -86,8 +85,8 @@ class MPSearch extends Component {
  }
 
  handleMP2Selected(index){
-  const selectedMP2 = this.state.data2.Members.Member[index];
-  const mpNumber2 = this.state.data2.Members.Member[index].$.Member_Id
+  const selectedMP2 = this.state.data.Members.Member[index];
+  const mpNumber2 = this.state.data.Members.Member[index].$.Member_Id
   this.setState({selectedMP2: selectedMP2});
   this.setState({mpNumber2: mpNumber2 })
   fetch('https://commonsvotes-services.digiminster.com/data/divisions.xml/membervoting?queryParameters.memberId='+mpNumber2, {
@@ -119,7 +118,7 @@ class MPSearch extends Component {
         onMPSelected={this.handleMPSelected} />
 
         <MPSelector2
-          data={this.state.data2}
+          data={this.state.data}
           onMP2Selected={this.handleMP2Selected} />
 
       </div>
