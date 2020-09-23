@@ -8,8 +8,6 @@ render(){
   if(!this.props.vote) return null;
   if(!this.props.vote2) return null;
 
-const voteDataAll = this.props.voteDataAll.ArrayOfPublishedDivision.PublishedDivision
-
 let voteTitles1 = this.props.vote.ArrayOfMemberVotingRecord.MemberVotingRecord.map(vote => {
   return vote.PublishedDivision[0].Title[0]
 })
@@ -42,16 +40,31 @@ for (a = 0; a < keys2.length; a++) {
   votesCombined2[keys2[a]] = values2[a];
 }
 
-console.log(votesCombined1)
-console.log(votesCombined2)
+let vtAll = voteTitles1.concat(voteTitles2.filter((item) => voteTitles1.indexOf(item) < 0))
+
+let votes = [votesCombined1, votesCombined2];
+
+let outputObj =  {};
+for (const qVal of vtAll){
+  for (const obj of votes){
+    if (obj.hasOwnProperty(qVal)) {
+      if (!outputObj.hasOwnProperty(qVal)){
+        // new qVal that doesn't exist in output
+        outputObj[qVal] = [obj[qVal]];
+      } else {
+        outputObj[qVal].push(obj[qVal]);
+      }
+    }
+  }
+}
+
+console.log(outputObj)
 
   return(
     <div>
     <div className="votes">
-    {voteDataAll.map(vote => (
-      <li key={uuidv4()}>{vote.Title}
-      </li>
-    ))}
+    {Object.entries(outputObj).map(([key, value]) =>
+    <p>{key} : {value}</p>)}
     </div>
     </div>
   )
