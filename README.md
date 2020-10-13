@@ -1,3 +1,13 @@
+App to display and compare two MP voting patterns in Commons. Part of ReactJS revision. Limited to 20 votes as per Commons Vote API limits.
+
+Currently still in development. Current bugs.
+
+1) Votes rendering as true/false.
+2) Votes not able to be attributed to relevant MP
+3) No indication of missed votes/no voting data available
+
+
+------
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
